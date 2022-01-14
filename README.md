@@ -1,9 +1,9 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/{APP-NAME}-app.svg?style=shield)](https://circleci.com/gh/giantswarm/{APP-NAME}-app)
+[![CircleCI](https://circleci.com/gh/giantswarm/prometheus-operator-crd.svg?style=shield)](https://circleci.com/gh/giantswarm/prometheus-operator-crd)
 
-# {APP-NAME} chart
+# prometheus-operator-crd chart
 
-Giant Swarm offers a {APP-NAME} App which can be installed in workload clusters.
-Here we define the {APP-NAME} chart with its templates and default configuration.
+Giant Swarm offers a prometheus-operator-crd App which can be installed in workload clusters.
+Here we define the prometheus-operator-crd chart with its templates and default configuration.
 
 **What is this app?**
 **Why did we add it?**
