@@ -6,8 +6,16 @@ Giant Swarm offers a prometheus-operator-crd App which can be installed in workl
 Here we define the prometheus-operator-crd chart with its templates and default configuration.
 
 **What is this app?**
+
+This app is a dependency for [prometheus-operator-app](https://github.com/giantswarm/prometheus-operator-app), which install the required CustomResourceDefinitions.
+
 **Why did we add it?**
+
+CRD management does not comes out of the box, so we need a separate app/chart in order to be able to fully manage (install/upgrade/delete) the CRDs.
+
 **Who can use it?**
+
+Anyone can use this.
 
 ## Installing
 
@@ -17,48 +25,39 @@ There are 3 ways to install this app onto a workload cluster.
 2. [Using our API](https://docs.giantswarm.io/api/#operation/createClusterAppV5)
 3. Directly creating the [App custom resource](https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/) on the management cluster.
 
-## Configuring
+### Sample App CR for the management cluster
 
-### values.yaml
-**This is an example of a values file you could upload using our web interface.**
-```
-# values.yaml
+If you have access to the Kubernetes API on the management cluster, you could create the App CR and ConfigMap directly.
 
-```
-
-### Sample App CR and ConfigMap for the management cluster
-If you have access to the Kubernetes API on the management cluster, you could create
-the App CR and ConfigMap directly.
-
-Here is an example that would install the app to
-workload cluster `abc12`:
+Here is an example that would install the app to workload cluster `abc12`:
 
 ```
 # appCR.yaml
-
-```
-
-```
-# user-values-configmap.yaml
-
-
+apiVersion: application.giantswarm.io/v1alpha1
+kind: App
+metadata:
+  name: prometheus-operator-crd
+  namespace: abc12
+spec:
+  catalog: control-plane-test-catalog
+  config:
+    configMap:
+      name: abc12-cluster-values
+      namespace: abc12
+  kubeConfig:
+    context:
+      name: abc12
+    inCluster: false
+    secret:
+      name: abc12-kubeconfig
+      namespace: abc12
+  name: prometheus-operator-crd
+  namespace: prometheus-operator-crd
+  version: 0.1.0
 ```
 
 See our [full reference page on how to configure applications](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
 
-## Compatibility
+## Credits
 
-This app has been tested to work with the following workload cluster release versions:
-
-*
-
-## Limitations
-
-Some apps have restrictions on how they can be deployed.
-Not following these limitations will most likely result in a broken deployment.
-
-*
-
-## Credit
-
-* {APP HELM REPOSITORY}
+* https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
