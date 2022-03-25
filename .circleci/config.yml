@@ -99,11 +99,11 @@ workflows:
               only: /^v.*/
 
       - architect/push-to-app-collection:
-          name: vmware-collection
+          name: vsphere-collection
           context: architect
           app_name: prometheus-operator-crd
           app_namespace: monitoring
-          app_collection_repo: vmware-app-collection
+          app_collection_repo: vsphere-app-collection
           disable_force_upgrade: true
           requires:
             - control-plane-catalog
