@@ -61,3 +61,11 @@ See our [full reference page on how to configure applications](https://docs.gian
 ## Credits
 
 * https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+
+## Upgrade
+
+In order to sync CRDs from upstream, run:
+
+```bash
+VERSION=32.4.0 hack/sync.sh
+```
