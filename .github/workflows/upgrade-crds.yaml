@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  gitleaks:
+  upgrade:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
     - name: Create release commit
       run: |
         git add -A
-        git commit -m "Release v${{ env.version }}"
+        git commit -m "Upgrade CRDs to v${{ inputs.version }}"
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
