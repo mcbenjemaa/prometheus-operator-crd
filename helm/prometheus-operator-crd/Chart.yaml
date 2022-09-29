@@ -8,8 +8,8 @@ type: application
 sources:
   - https://github.com/prometheus-community/helm-charts
   - https://github.com/prometheus-operator/kube-prometheus
-appVersion: 0.52.1
-version: 23.2.0
+appVersion: 0.54.0
+version: 32.4.0
 kubeVersion: ">=1.16.0-0"
 annotations:
   application.giantswarm.io/team: atlas
